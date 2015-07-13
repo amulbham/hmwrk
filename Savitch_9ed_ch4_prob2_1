@@ -1,0 +1,93 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose: To calculate a users clothing sizes
+ * based on inputted height, weight, and age
+ * Created on July 12, 2015, 10:37 PM
+ */
+//System Libraries
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+float hatSize(float,float);
+float jackSize(float,float,float);
+float waist(float,float);
+
+//User Libraries
+
+//Execution begins here
+int main(int argc, char** argv) {
+    
+    //Declare variables
+    float height;
+    float weight;
+    float age;
+    float htSize; //hat size
+    float jkSize; //jacket size
+    float wSize; //waist size 
+    char anw;  //sentinel value
+    //Initialize variables
+    do{
+    cout<<"What is your height in inches?\n";
+    cin>>height;
+    cout<<"What is your weight in pounds\n";
+    cin>>weight;
+    cout<<"And finally, what is your age?\n";
+    cin>>age;
+    
+    //Output results
+    htSize = hatSize(weight,height); 
+    cout<<fixed<<showpoint<<setprecision(1);
+    cout<<"Your Hat size is "<<htSize<<" inches\n";
+    
+    jkSize = jackSize(height,weight,age);
+    cout<<fixed<<showpoint<<setprecision(1);
+    cout<<"Your jacket size is "<<jkSize<<" inches\n";
+    
+    wSize = waist(weight,age);
+    cout<<"Your waist size is "<<wSize<<" inches\n";
+    
+    cout<<"Would you like to run the program again?  y / n \n";
+    cin>>anw;
+    
+    }while(anw == 'y' || anw == 'Y');   
+    
+    return 0;
+}
+
+float hatSize(float wt,float ht){
+    float z = (wt/ht)*2.9;
+    return z;
+
+}
+float jackSize(float ht,float wt,float age){
+    float jksize;
+    float x = (age/10)-3; //accounts for increase after age 40
+    //subtract 3 because increase starts at 40
+    
+    if (age>=40){
+        jksize = ((ht*wt)/288)+ (x*(1.0/8.0));
+    }else if(age<40)
+        jksize = ((ht*wt)/288)+ ((1.0/8.0));
+    return jksize;
+}
+
+float waist(float wt,float age){
+    float y;
+    float x = (age/2)-14; //accounts for increase after age 28, 
+    //-14 to account for increase starting at 28
+    
+    if (age>28){
+        y = (wt/5.7) + (x*(1.0/10.0));
+    
+    }else if(age<28){
+        y = (wt/5.7);
+    }
+
+    return y;
+}
