@@ -1,0 +1,56 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose : To calculate the windchill 
+ * index based on user inputted values
+ * Created on July 13, 2015, 11:02 PM
+ */
+
+//System Libraries
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+float getWindchill(float,float,float);
+
+//User Libraries
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Declare Variables
+    float windC; //Windchill index
+    float windS; //wind speed
+    float tempC; //Temperature in Celsius
+    
+    //Initialize Variables
+    do{
+    cout<<"Enter the wind speed \n";
+    cin>>windS;
+    cout<<"Enter the temperature in Celsius \n";
+    cin>>tempC;
+    
+    if (tempC > 10){
+        cout<<"Temperature must be higher than 10 degrees "
+                "Celsius in order to have windchill \n"
+                "Enter a valid temperature \n\n";
+    }
+    }while(tempC>10); //Validates user input for temperature
+    
+    //Output the results
+    windC = getWindchill(windC,windS,tempC);//call function to calc. windchill
+    cout<<showpoint<<fixed<<setprecision(1);
+    cout<<"The windchill index is "<<windC<<" degrees Celsius\n";
+    
+    return 0;
+}
+
+float getWindchill(float WC,float WS,float temp){ //used to calculate windchill
+    WC = 13.12+ (0.6215*temp) - 
+            (11.37*pow(WS,0.16)) + (0.3965*temp*pow(WS,0.16));
+    return WC;
+}
