@@ -1,0 +1,66 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose : To determine difference in time
+ * between a starting time and a future time
+ * Created on July 13, 2015, 8:01 PM
+ */
+
+//System Libraries
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+int calculateDifference(int, int, string, int, int, string);
+
+//User Libraries
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Declare Variables
+    int hours,minutes,fhours,fmins; //present hours and mins +future hours ,mins
+    string fampm,ampm; //am/pm starting and future
+    int diff; //difference in minutes
+    //Initialize Variables
+    cout<<"Starting time (hours)?"<<endl;
+    cin>>hours;
+    cout<<"Starting time (mins)?"<<endl;
+    cin>>minutes;
+    cout<<"AM or PM?"<<endl;
+    cin>>ampm;
+    cout<<"Future time (hours)?"<<endl;
+    cin>>fhours;
+    cout<<"Future time (mins)?"<<endl;
+    cin>>fmins;
+    cout<<"AM or PM?"<<endl;
+    cin>>fampm;
+    
+    //Output the results, call calculateDifference function to determine diff. 
+   diff = calculateDifference(hours,minutes,ampm,fhours,fmins,fampm);
+    
+    cout<<"The difference between your starting time and"
+            " future time is "<<diff<<" minutes\n";
+
+    return 0;
+}
+
+int calculateDifference(int x, int y, string z, int a, int b, string c){
+    int ptime = (x*60) + y; //converts present and future time
+    int ftime = (a*60) + b; //to a whole number.
+    int mindiff; //diff in minutes
+    
+    if (z == "AM" && c == "AM" || z == "PM" && c == "PM"){ //Accounts for 
+        mindiff = ptime + ftime; //if the times are same 12 hour window
+    }else if (z == "AM" && c == "PM" || z == "PM" && c == "AM"){
+        mindiff = ptime - ftime; //if the 12 hour window is diff.
+        if (mindiff<0){ //multiply by -1 to rid of a - sign
+            mindiff = mindiff * -1;
+        }
+    }
+    return mindiff;
+}
+
