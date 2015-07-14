@@ -1,0 +1,64 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose : To output what coins to give out
+ * based on any amount of change
+ * Created on July 13, 2015, 11:26 PM
+ */
+
+//System Libraries
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <math.h>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+float calChange(int,int,int,int);
+//User Libraries
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Declare variables
+    float change; //user inputted change to be calculated for
+    int x,y,z; //# of quarters, dimes, and pennies in order
+    
+    //Initialize Variables
+    cout<<"Enter the change \n";
+    cin>>change;
+    change = change * 100;
+
+    //Output the results
+    calChange(change, x,y,z);
+    cout<<change<<" cent can be given as \n";
+    cout<<x<<" quarter(s)"<<y<<" dime(s) and "<<z<<" pennie(s) \n";
+    
+    return 0;
+}
+
+float calChange(int chn, int x, int y, int z){
+    int amtLD; //Amount left for dimes
+    int amtLP; //amount left for pennies
+    
+    if (chn / 25){
+        x = chn / 25;
+       amtLD =  chn%(25);
+        if (amtLD / 10){
+             y = amtLD / 10;
+            amtLP = amtLD%10;  
+            z = amtLP / 1; 
+        }else{ 
+       z =  amtLD / 1;
+        } 
+    }else if (chn / 10){
+       y = chn / 10;
+       amtLP = chn%10;
+       z = amtLP / 1;
+    }else{
+        z = chn / 1;
+    }
+    return x,y,z; 
+}
