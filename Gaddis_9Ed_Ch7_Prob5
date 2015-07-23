@@ -1,0 +1,70 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose: Create a report using 
+ * two dimensional arrays based on user
+ * inputted data regarding monkeys. 
+ * Created on July 23, 2015, 12:38 PM
+ */
+
+//System Libraries
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+void printReport(int ary[],int,int);
+//User Libraries
+
+//Execution begins here 
+int main(int argc, char** argv) {
+    //Declare Variables 
+    const int monk = 3; //# of monkeys - 1
+    const int days = 5; //days of the week - 1
+    int monAry[monk][days];
+    float avgDay; //average amount of food eaten per day 
+    int foodL; //least amount of food eaten by any one monkey
+    int foodG; //greatest amount of food eaten by any one monkey 
+    int a,b,c,d;
+    //Initialize Variables - use double for loop
+    for (int x = 0; x<monk;x++){
+        cout<<"Input the food eaten in pounds(lbs) for monkey #"<<x+1<<endl;
+        for(int i = 0;i<days;i++){
+       cout<<"Day "<<i+1<<": ";  cin>>monAry[x][i];
+        }
+    }
+    //use for loop to determine the average amount of food eaten per day 
+    for(int x =0;x<days;x++){
+        avgDay = (monAry[0][x] + monAry [1][x] + monAry [2][x])/3.0;
+        cout<<fixed<<showpoint<<setprecision(2);
+        cout<<"The average food eaten for day "<<x+1<<": "<<avgDay<<" lbs\n"<<endl;
+    }
+    //Determine lowest amount of food eaten and highest by any one monkey 
+    foodL = monAry[0][0];
+    for (int x = 0; x<monk;x++){ //determines lowest food amount 
+        for (int i = 0; i<days; i++){
+        if (monAry[x][i]<foodL){
+            foodL = monAry[x][i];
+            c = x+1; d = i +1;
+        }}
+    }foodG = monAry[0][0]; //greatest food amount eaten 
+    for (int x = 0; x<monk;x++){
+        for (int i = 0; i<days; i++){
+        if (monAry[x][i]>foodG){
+            foodG = monAry[x][i];
+            a = x+1; b = i+1;
+        }}
+    }
+    //Output the least and greatest amount of food eaten by any one monkey  
+    cout<<"The least amount of food eaten was by monkey "<<c<<" on day: "<<d<<
+            " eating a total of "<<foodL<<" lbs of food"<<endl<<endl;
+    cout<<"The greatest amount of food eaten was by monkey "<<a<<" on day: "<<b<<
+            " eating a total of "<<foodG<<" lbs of food"<<endl;
+   
+    //Exit the stage right !
+    
+    return 0;
+}
+
