@@ -1,0 +1,109 @@
+Amul
+
+
+
+Drive
+.
+Folder Path
+My Drive
+CSC5
+assignment 6-7
+Gaddis_9Ed_ch7_prob1
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+Name
+Owner
+Last modified
+File size
+build
+me
+Jul 22, 2015me
+—
+dist
+me
+Jul 22, 2015me
+—
+nbproject
+me
+Jul 22, 2015me
+—
+
+.dep.inc
+me
+Jul 22, 2015me
+144 bytes
+
+main.cpp
+me
+Jul 22, 2015me
+1 KB
+
+Makefile
+me
+Jul 22, 2015me
+3 KB
+20 GB used (17%)
+Buy more storage
+
+main.cpp
+Open with
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose : Determine the largest and
+ * smallest values stored in a given array
+ * Created on July 22, 2015, 12:19 PM
+ */
+
+#include <iostream>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+
+//User libraries
+
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Declare Variables 
+    const int COUNT = 9;
+    int ary[COUNT]; //array to store 10 values 
+    int sval; //smallest value
+    int lval; //largest value
+    
+    //Initialize the variables
+    for (int i = 0; i<=COUNT; i++){
+        cout<<"Please enter a value"<<endl;
+        cin>>ary[i];
+    }
+    //by making the largest or smallest value = first number in array
+    //we can use a for loop to compare values against it 
+    //changing the value if it is larger or smaller
+    lval = ary[0]; //set largest value = to the first value
+    for (int i = 1; i<=COUNT; i++){
+        if(ary[i]>lval){
+        lval = ary[i];
+        }
+    }
+    sval = ary[0]; //set smallest value = to first number
+    for (int i = 1; i<=COUNT; i++){
+        if(ary[i]<sval){
+            sval = ary[i];
+        }
+    }
+    //Output the largest value and the smallest value 
+    cout<<"Smallest value is : "<<sval<<endl;
+    cout<<"Largest value is : "<<lval<<endl;
+    
+    //Exit stage right !
+    return 0;
+}
