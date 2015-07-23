@@ -1,0 +1,52 @@
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham    
+ * Purpose : Create a function that 
+ * displays the numbers of an array
+ * that are greater than n
+ * Created on July 23, 2015, 12:13 PM
+ */
+
+
+//System Libraries
+#include <iostream>
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+void printArrayN(int ary[],int SIZE, int n);
+
+//User Libraries
+
+//Execution begins here 
+int main(int argc, char** argv) {
+    //Declare Variables 
+    int n; //number to compare values of array too
+    int SIZE = 20; //size of the array
+    int ary[SIZE]; //array to store values 
+    
+    //Initialize Variables - fill the array
+    for (int x = 0; x<SIZE;x++){
+        cout<<"Enter value #"<<x+1<<endl;
+        cin>>ary[x];
+    }
+    cout<<"Please enter a value for n"<<endl;
+    cin>>n;
+    
+    //Output results - use function to compare values to n
+    printArrayN(ary,SIZE,n);
+    
+    //Exit stage right !
+    
+    return 0;
+}
+
+void printArrayN(int ary[],int SIZE, int n){
+   cout<<"The values larger than "<<n<<" are the following"<<endl; 
+    for (int x = 0;x<SIZE;x++){
+        if (ary[x]>n){
+            cout<<"#"<<x+1<<": "<<ary[x]<<endl;
+        }
+    }
+}
