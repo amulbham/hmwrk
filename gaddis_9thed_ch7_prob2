@@ -1,0 +1,126 @@
+Amul
+
+
+
+Drive
+.
+Folder Path
+My Drive
+CSC5
+assignment 6-7
+Gaddis_9Ed_ch7_prob2
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+Name
+Owner
+Last modified
+File size
+build
+me
+Jul 22, 2015me
+—
+dist
+me
+Jul 22, 2015me
+—
+nbproject
+me
+Jul 22, 2015me
+—
+
+.dep.inc
+me
+Jul 22, 2015me
+144 bytes
+
+main.cpp
+me
+Jul 22, 2015me
+2 KB
+
+Makefile
+me
+Jul 22, 2015me
+3 KB
+20 GB used (17%)
+Buy more storage
+
+main.cpp
+Open with
+/* 
+ * File:   main.cpp
+ * Author: Amul Bham
+ * Purpose : To calculate and display the
+ * total rainfall for the year, average
+ * monthly rainfall, and the months with
+ * the highest and lowest amounts
+ * Created on July 22, 2015, 1:04 PM
+ */
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+//Global Constants
+
+//Function Prototypes
+
+//User libraries
+
+
+//Execution begins here
+int main(int argc, char** argv) {
+    //Declare Variables
+    const int MONTHS = 11;
+    float rainF[MONTHS]; //array to store total rainfall for each month
+    float rainT;   //total rainfall over 12 months 
+    float rainAvg; //average rainfall over 12 months
+    float rainH;   //month with highest rainfall
+    float rainL;   //month with the lowest rainfall      
+    int y,x;       //store the month with low and high rainfall     
+    //Initialize the variables 
+    
+    for(int i = 0; i<=MONTHS;i++){ //for loop to initialize array
+      do{  //input validation incase negative value is entered 
+        cout<<"Enter the total rainfall for month "<<i+1<<endl;
+        cin>>rainF[i];
+        if (rainF[i]<0){ cout<<"We do not accept negative values"<<endl;}
+      }while(rainF[i]<0);
+        rainT +=rainF[i]; //Total rainfall is constantly summed
+    } 
+    //use for loop with if statement to determine lowest and highest months
+    rainL = rainF[0];
+    for(int i = 1;i<=MONTHS;i++){
+        if (rainF[i]<rainL){
+            rainL = rainF[i]; //lowest rainfall 
+            x = i;
+        }
+    }
+    rainH = rainF[0];
+    for (int i = 1;i<=MONTHS;i++){
+        if(rainF[i]>rainH){
+            rainH = rainF[i]; //highest rainfall 
+            y = i;
+        }
+    }
+    rainAvg = rainT/MONTHS; //average rainfall takes the rain total and
+    //divides by the months 
+    
+    //Output the results = avg rainfall, total rainfall, highest, lowest
+    cout<<showpoint<<fixed<<setprecision(1);
+    cout<<"The total rainfall for the year is : "<<rainT<<endl;
+    cout<<"The average monthly rainfall is : "<<rainAvg<<endl;
+    cout<<"month "<<x<<" had lowest rainfall with : "<<rainL<<endl;
+    cout<<"month "<<y<<" had highest rainfall with : "<<rainH<<endl;
+    
+    //Exit stage right !
+
+    return 0;
+}
